@@ -47,6 +47,7 @@ public class CalendarsController {
     return "redirect:/calendars";
   }
 
+  List<Map<String, Object>> weekDays = getWeek();
   private List<Map<String, Object>> getweek() {
     List<Map<String, Object>> weekDays = new ArrayList<>();
 
@@ -66,11 +67,11 @@ public class CalendarsController {
           }
       }
 
-      day_map.put("month", currentDate.getMonthValue());
-      day_map.put("date", currentDate.getDayOfMonth());
-      day_map.put("plans", todayPlans);
-
-      weekDays.add(day_map);
+      Map<String, Object> dayMap = new HashMap<>();
+      dayMap.put("month", currentDate.getMonthValue());
+      dayMap.put("date", currentDate.getDayOfMonth());
+      dayMap.put("plans", todayPlans);
+      weekDays.add(dayMap);
     }
 
     return weekDays;
