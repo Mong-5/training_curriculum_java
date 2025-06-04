@@ -30,7 +30,7 @@ public class CalendarsController {
   @GetMapping("/")
   public String index(Model model) {
     model.addAttribute("planForm", new PlanForm());
-    List<Map<String, Object>> weekDays = get_week();
+    List<Map<String, Object>> weekDays = getweek();
     model.addAttribute("weekDays", weekDays);
     return "calendars/index";
   }
@@ -47,7 +47,8 @@ public class CalendarsController {
     return "redirect:/";
   }
 
-  private List<Map<String, Object>> get_week() {
+  List<Map<String, Object>> weekDays = getWeek();
+  private List<Map<String, Object>> getweek() {
     List<Map<String, Object>> weekDays = new ArrayList<>();
 
     LocalDate todaysDate = LocalDate.now();
@@ -56,7 +57,11 @@ public class CalendarsController {
     String[] wdays = {"(日)", "(月)", "(火)", "(水)", "(木)", "(金)", "(土)"};
 
     for (int x = 0; x < 7; x++) {
+second_training
       Map<String, Object> day_map = new HashMap<>();
+
+      Map<String, String> newMap = new HashMap<>();
+ main
       LocalDate currentDate = todaysDate.plusDays(x);
 
       List<String> todayPlans = new ArrayList<>();
@@ -66,15 +71,20 @@ public class CalendarsController {
           }
       }
 
+second_training
       // 曜日番号を計算  day_map.put("month", currentDate.getMonthValue());
       int wdayNum = (todaysDate.getDayOfWeek().getValue() + x) % 7;
 
+main
       Map<String, Object> dayMap = new HashMap<>();
       dayMap.put("month", currentDate.getMonthValue());
       dayMap.put("date", currentDate.getDayOfMonth());
       dayMap.put("plans", todayPlans);
+ second_training
       dayMap.put("wday", wdays[wdayNum]);
 
+
+main
       weekDays.add(dayMap);
     }
 

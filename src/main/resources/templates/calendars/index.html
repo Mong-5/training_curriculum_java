@@ -19,6 +19,7 @@
       <button type="submit">保存</button>
     </form>
 
+second_training
 
     <div class="calendar">
       <div th:each="day : ${weekDays}">
@@ -26,12 +27,21 @@
           <div class="date">
            <span th:text="${day.month} + '/' + ${day.date} + ${day.wday}"></span>
           </div>
+
+    <div class="calendar">
+      <div th:each="day : ${weekDays}">
+        <div class="item">
+          <div class="date"></div>
+main
           <ul class="content">
             <li th:each="plan : ${day.plans}" class="plan-list">・<span th:text="${plan}"></span></li>
           </ul>
         </div>
       </div>
     </div>
+second_training
 
+
+ main
 </body>
 </html>
